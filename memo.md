@@ -54,4 +54,6 @@
     # in host: remove container
     sudo docker ps -a -f ancestor=amazonlinux:2 --format "{{.ID}}" | xargs -I {} sudo docker rm -f {}
     ``` -->
-   
+
+6. プラグインをインストール`npm install -save-dev serverless-step-functions`
+7. 画像をダウンロード`https://drive.google.com/file/d/1DJN-FoZyHpAUTMjWPFRlvnRtr3yPDAVp/view?usp=sharing`

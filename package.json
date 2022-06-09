@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "serverless-layers": "^2.5.4"
+    "serverless-layers": "^2.5.4",
+    "serverless-step-functions": "^3.7.0"
   },
   "dependencies": {
     "jest": "^28.1.0",
