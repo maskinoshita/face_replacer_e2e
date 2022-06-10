@@ -63,7 +63,6 @@ provider:
     ProcessedBucketName: ${param:ProcessedBucketName}
     OriginalBucketName: ${param:OriginalBucketName}
     StaticWebSiteUrl: ${param:StaticWebSiteUrl}
-    HttpApiUrl: ${param:HttpApiUrl}
     DynamoTableName: ${param:DynamoTableName}
 
 params:
