@@ -47,7 +47,7 @@ describe('e2e', () => {
         // see: s3_put.test.js
         expect(imgs.length).toBe(1);
         const src = await page.evaluate(elem => elem.src, imgs[0]);
-        expect(src).toMatch(/.*people2.jpg/)
+        expect(src).toMatch(/.*male1.jpg/)
 
         // スクリーンショットを取る
         const buffer = await page.screenshot();

@@ -8,7 +8,7 @@ const fs = require("fs");
 module.exports.s3put = async (event, context, callback) => {
     try {
         const originalBucket = process.env.OriginalBucketName;
-        const filename = 'people2.jpg';
+        const filename = 'male1.jpg';
         
         const data = fs.readFileSync(`face_images/${filename}`);
         const params = {

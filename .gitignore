@@ -5,5 +5,4 @@ jspm_packages
 # Serverless directories
 .serverless
 
-face_images
 face_images.zip
