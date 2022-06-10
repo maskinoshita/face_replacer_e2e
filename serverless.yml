@@ -10,7 +10,6 @@ provider:
 #  stage: dev
   region: ap-northeast-1
 
-# you can add statements to the Lambda function's IAM Role here
   iam:
     role:
       statements:
@@ -57,7 +56,6 @@ provider:
           Resource:
             - "${param:DynamoTableArn}"
         
-# you can define service wide environment variables here
   environment:
     TestArtifactsBucket: !Ref TestArtifactsBucket
     ProcessedBucketName: ${param:ProcessedBucketName}
@@ -70,7 +68,6 @@ params:
     ProcessedBucketName: ""
     OriginalBucketName: ""
     StaticWebSiteUrl: ""
-    HttpApiUrl: ""
     DynamoTableName: ""
     DynamoTableArn: ""
 
@@ -78,20 +75,13 @@ custom:
   # 重要!!! 一意の名前をつけてください !!!
   suffix: "mk"
   serverless-layers:
-    # 重要!!! 自分のバケットに変更してください !!!
-    layersDeploymentBucket: 20220527-layers-bucket-mk
+    layersDeploymentBucket: 20220527-layers-bucket-${self:custom.suffix}
     dependenciesPath: ./package.json
 
-# you can add packaging information here
 package:
   excludeDevDependencies: true # なぜかうまく機能しないのでpatternsで指定する
   patterns:
     - '!chrome_aws_lambda.zip'
-#  patterns:
-#    - '!exclude-me.js'
-#    - '!exclude-me-dir/**'
-#    - include-me.js
-#    - include-me-dir/**
 
 layers:
   chrome:
@@ -114,7 +104,7 @@ functions:
     memorySize: 256
     timeout: 20
 
-
+# StepFunctionsの定義
 stepFunctions:
   stateMachines:
     E2ETestStateMachine:
@@ -139,7 +129,6 @@ stepFunctions:
           Succeed:
             Type: Succeed
 
-# you can add CloudFormation resource templates here
 resources:
   Resources:
     # テストの結果を出力するバケット
@@ -147,10 +136,6 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: "20220527-face-replacer-test-${self:custom.suffix}-${sls:stage}"
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
 
 plugins:
   - serverless-layers
